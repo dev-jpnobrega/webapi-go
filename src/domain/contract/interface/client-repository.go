@@ -1,8 +1,11 @@
 package domain
 
-import entity "webapi/src/domain/entity"
+import (
+	values "webapi/src/domain/contract/value"
+	entity "webapi/src/domain/entity"
+)
 
 // IClientRepository - interface
 type IClientRepository interface {
-	Get(params interface{}) (error, []entity.Client)
+	Get(params interface{}) ([]entity.Client, *values.ResponseError)
 }

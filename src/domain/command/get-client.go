@@ -5,28 +5,29 @@ import (
 	values "webapi/src/domain/contract/value"
 )
 
-// GetClientCommand - fc
+// GetClientCommand - Search clients by arguments
 type GetClientCommand struct {
 	Repository interfaces.IClientRepository
 }
 
 // GetModelValidate command
 func (g *GetClientCommand) GetModelValidate() interface{} {
-	return &values.InputLogin{}
+	return &values.SearchArgs{}
 }
 
-func (g *GetClientCommand) Execute(
-	input values.RequestData,
-) (result values.ResponseData, err *values.ResponseError) {
-	args := input.Args.(*values.InputLogin)
+// Execute - Inicialize command operation
+func (g *GetClientCommand) Execute(input values.RequestData) (
+	result values.ResponseData, err *values.ResponseError,
+) {
+	args := input.Args.(*values.SearchArgs)
 
-	errs, client := g.Repository.Get(args)
+	clients, err := g.Repository.Get(args)
 
-	if errs != nil {
+	if err != nil {
 		return
 	}
 
-	result.Data = client
+	result.Data = clients
 	result.StatusCode = 200
 
 	return

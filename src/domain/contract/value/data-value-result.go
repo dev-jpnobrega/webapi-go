@@ -14,10 +14,10 @@ type RequestData struct {
 	Args          interface{}
 }
 
-// InputLogin - parameters login user
-type InputLogin struct {
-	Email string `json:"email" form:"email" query:"email" validate:"required,email"`
-	Pass  string `json:"pass" form:"pass" query:"pass" validate:"required"`
+// SearchArgs - filter search
+type SearchArgs struct {
+	Name  string `json:"name" form:"name" query:"name" validate:""`
+	Email string `json:"email" form:"email" query:"email" validate:""`
 }
 
 // ErrorModel - ER

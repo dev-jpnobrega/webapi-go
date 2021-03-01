@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	db "webapi/src/db"
+	values "webapi/src/domain/contract/value"
 	entity "webapi/src/domain/entity"
 )
 
@@ -11,14 +12,15 @@ type ClientRepository struct {
 }
 
 // Get - by params
-func (c *ClientRepository) Get(params interface{}) (error, []entity.Client) {
+func (c *ClientRepository) Get(params interface{}) ([]entity.Client, *values.ResponseError) {
 
-	return nil, []entity.Client{
-		{
-			ID:        "",
-			Name:      "JPNobrega",
-			Age:       21,
-			CompanyID: 0,
+	return []entity.Client{
+			{
+				ID:        "",
+				Name:      "JPNobrega",
+				Age:       21,
+				CompanyID: 0,
+			},
 		},
-	}
+		nil
 }
