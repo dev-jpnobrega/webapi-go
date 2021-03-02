@@ -1,13 +1,21 @@
 package domain
 
-import "strings"
+import (
+	"strings"
+	"time"
+
+	"github.com/google/uuid"
+)
 
 // Client - Client Entity
 type Client struct {
-	ID        string
+	ID        uuid.UUID
 	Name      string
 	Age       int
 	CompanyID int
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt *time.Time
 }
 
 // IsValid - Check Client

@@ -7,5 +7,5 @@ import (
 
 // IClientRepository - interface
 type IClientRepository interface {
-	Get(params interface{}) ([]entity.Client, *values.ResponseError)
+	Get(params interface{}) (*[]entity.Client, *values.ResponseError)
 }

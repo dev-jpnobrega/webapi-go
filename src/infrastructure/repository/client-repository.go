@@ -12,15 +12,11 @@ type ClientRepository struct {
 }
 
 // Get - by params
-func (c *ClientRepository) Get(params interface{}) ([]entity.Client, *values.ResponseError) {
+func (c *ClientRepository) Get(params interface{}) (*[]entity.Client, *values.ResponseError) {
 
-	return []entity.Client{
-			{
-				ID:        "",
-				Name:      "JPNobrega",
-				Age:       21,
-				CompanyID: 0,
-			},
-		},
-		nil
+	clients := &[]entity.Client{}
+
+	c.Database.GetModel(&entity.Client{}).Find(&clients)
+
+	return clients, nil
 }
