@@ -14,12 +14,6 @@ type RequestData struct {
 	Args          interface{}
 }
 
-// SearchArgs - filter search
-type SearchArgs struct {
-	Name  string `json:"name" form:"name" query:"name" validate:""`
-	Email string `json:"email" form:"email" query:"email" validate:""`
-}
-
 // ErrorModel - ER
 type ErrorModel struct {
 	Code    int

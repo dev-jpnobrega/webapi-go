@@ -27,4 +27,9 @@ func Build(server *echo.Echo) {
 		factory.GetClientFactory(),
 		handler.NewHandler(),
 	))
+
+	server.POST("/v1/client", adapter(
+		factory.CreateClientFactory(),
+		handler.NewHandler(),
+	))
 }
