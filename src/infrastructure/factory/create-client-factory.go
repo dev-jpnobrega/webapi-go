@@ -10,6 +10,8 @@ import (
 // CreateClientFactory - factory
 func CreateClientFactory() interfaces.ICommand {
 	return &command.CreateClientComannd{
-		Repository: &repository.ClientRepository{&infrastructure.DB{}},
+		Repository: &repository.ClientRepository{
+			Database: &infrastructure.DB{},
+		},
 	}
 }
