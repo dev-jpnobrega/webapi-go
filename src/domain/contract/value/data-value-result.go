@@ -1,16 +1,27 @@
 package domain
 
+import (
+	entity "webapi/src/domain/entity"
+
+	"github.com/cheekybits/genny/generic"
+)
+
 // ResponseData ...
 type ResponseData struct {
 	Data       interface{}
 	StatusCode int
 }
 
+//ValidateModal -s
+type ValidateModal struct {
+	Modal generic.Type
+}
+
 // RequestData ...
 type RequestData struct {
-	Authorization string
-	XAppToken     string
-	UserInfo      interface{}
+	Authorization string `header:"Authorization" form:"Authorization" query:"Authorization" validate:"required"`
+	XAppToken     string `header:"X-App-Token" form:"X-App-Token" query:"X-App-Token" validate:"required"`
+	UserInfo      entity.User
 	Args          interface{}
 }
 

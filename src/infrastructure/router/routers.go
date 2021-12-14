@@ -30,6 +30,11 @@ func Build(server *echo.Echo) {
 
 	server.POST("/v1/client", adapter(
 		factory.CreateClientFactory(),
+		handler.NewAuthHandler(),
+	))
+
+	server.PUT("/v1/client/:id", adapter(
+		factory.PutClientFactory(),
 		handler.NewHandler(),
 	))
 }

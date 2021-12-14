@@ -4,30 +4,28 @@ import (
 	interfaces "webapi/src/domain/contract/interface"
 	values "webapi/src/domain/contract/value"
 	entity "webapi/src/domain/entity"
-
-	"github.com/google/uuid"
 )
 
-// CreateClientComannd - Create client command
-type CreateClientComannd struct {
+// PutClientComannd - PUT client command
+type PutClientComannd struct {
 	Repository interfaces.IClientRepository
 }
 
 // GetModelValidate command
-func (c *CreateClientComannd) GetModelValidate() *values.ValidateModal {
+func (c *PutClientComannd) GetModelValidate() *values.ValidateModal {
 	return &values.ValidateModal{
-		Modal: &entity.Client{},
+		Modal: &values.PutArgs{},
 	}
 }
 
 // Execute - Create client execute
-func (c *CreateClientComannd) Execute(input values.RequestData) (
+func (c *PutClientComannd) Execute(input values.RequestData) (
 	result values.ResponseData, err *values.ResponseError,
 ) {
 	client := input.Args.(*entity.Client)
-	client.ID = uuid.New()
+	// client.ID = uuid.New()
 
-	_, err = c.Repository.Create(client)
+	_, err = c.Repository.Update(client)
 
 	if err != nil {
 		return

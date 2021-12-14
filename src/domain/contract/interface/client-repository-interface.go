@@ -9,4 +9,5 @@ import (
 type IClientRepository interface {
 	Get(params interface{}) (*[]entity.Client, *values.ResponseError)
 	Create(client *entity.Client) (*entity.Client, *values.ResponseError)
+	Update(client *entity.Client) (bool, *values.ResponseError)
 }

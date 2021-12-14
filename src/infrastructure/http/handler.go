@@ -29,13 +29,19 @@ func onFaliure(context echo.Context, r value.ResponseError) error {
 	return context.JSONPretty(r.StatusCode, r, "  ")
 }
 
+func buildParameters(context echo.Context, command interfaces.ICommand) *value.RequestData {
+	model := new(value.RequestData)
+	model.Args = command.GetModelValidate().Modal
+
+	return model
+}
+
 // Handler - HTTP handler
 type Handler struct{}
 
 // Handle - Execute http request
 func (h *Handler) Handle(context echo.Context, command interfaces.ICommand) error {
-	model := new(value.RequestData)
-	model.Args = command.GetModelValidate()
+	model := buildParameters(context, command)
 
 	if err := context.Bind(&model.Args); err != nil {
 		return onUnprocessableEntity(context, err)

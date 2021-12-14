@@ -11,8 +11,13 @@ type GetClientCommand struct {
 }
 
 // GetModelValidate command
-func (g *GetClientCommand) GetModelValidate() interface{} {
-	return &values.SearchArgs{}
+// func (g *GetClientCommand) GetModelValidate() interface{} {
+//	return &values.SearchArgs{}
+// }
+func (c *GetClientCommand) GetModelValidate() *values.ValidateModal {
+	return &values.ValidateModal{
+		Modal: &values.SearchArgs{},
+	}
 }
 
 // Execute - Inicialize command operation

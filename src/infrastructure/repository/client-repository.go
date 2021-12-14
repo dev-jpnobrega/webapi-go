@@ -32,3 +32,13 @@ func (c *ClientRepository) Create(client *entity.Client) (*entity.Client, *value
 
 	return client, nil
 }
+
+// Update - by client props
+func (c *ClientRepository) Update(client *entity.Client) (bool, *values.ResponseError) {
+
+	result := c.Database.GetModel(&entity.Client{}).Updates(client).Error
+
+	log.Info(result)
+
+	return true, nil
+}
