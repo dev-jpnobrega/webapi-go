@@ -2,7 +2,6 @@ package infrastructure
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 	interfaces "webapi/src/domain/contract/interface"
 	value "webapi/src/domain/contract/value"
@@ -19,12 +18,22 @@ func onUnauthorized(context echo.Context, err error) error {
 	return context.JSONPretty(http.StatusUnprocessableEntity, r, " ")
 }
 
-func buildAuthParameters(context echo.Context, command interfaces.ICommand) *value.RequestData {
+func buildAuthParameters(context echo.Context, command interfaces.ICommand) (*value.RequestData, error) {
 	model := new(value.RequestData)
 	model.Args = command.GetModelValidate().Modal
 	model.Authorization = context.Request().Header.Get("Authorization")
 
-	return model
+	user, err := authService.VerifyAndDecode(model.Authorization)
+
+	if err != nil {
+		return nil, err
+	}
+
+	jsonBody, err := json.Marshal(user)
+
+	json.Unmarshal(jsonBody, &model.UserInfo)
+
+	return model, err
 }
 
 // AuthenticationHandler - HTTP handler with authentication
@@ -32,23 +41,11 @@ type AuthenticationHandler struct{}
 
 // Handle - Execute http request
 func (h *AuthenticationHandler) Handle(context echo.Context, command interfaces.ICommand) error {
-	model := buildAuthParameters(context, command)
-
-	user, err := authService.VerifyAndDecode(model.Authorization)
-
-	jsonBody, err := json.Marshal(user)
-
-	log.Print(jsonBody, err)
-
-	json.Unmarshal(jsonBody, &model.UserInfo)
-
-	log.Print(model.UserInfo)
+	model, err := buildAuthParameters(context, command)
 
 	if err != nil {
 		return onUnauthorized(context, err)
 	}
-
-	// model.UserInfo = user.
 
 	if err := context.Bind(&model.Args); err != nil {
 		return onUnprocessableEntity(context, err)
