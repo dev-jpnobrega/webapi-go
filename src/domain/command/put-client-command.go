@@ -23,7 +23,6 @@ func (c *PutClientComannd) Execute(input values.RequestData) (
 	result values.ResponseData, err *values.ResponseError,
 ) {
 	client := input.Args.(*entity.Client)
-	// client.ID = uuid.New()
 
 	_, err = c.Repository.Update(client)
 

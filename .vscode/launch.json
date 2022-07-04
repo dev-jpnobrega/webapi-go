@@ -17,7 +17,7 @@
           "DATABASE_NAME": "workout",
           "DATABASE_SCHEMA": "dbuser",
           "DATABASE_HOST": "localhost",
-          "DATABASE_PORT": 5432,
+          "DATABASE_PORT": "5432",
           "DATABASE_USER": "postgres",
           "DATABASE_PASSWORD": "postgres",
           "JWT_SECRET": "{000-1-00232-111-931313-13142-12129-24-3333}"
