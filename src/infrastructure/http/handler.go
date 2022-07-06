@@ -36,10 +36,8 @@ func buildParameters(context echo.Context, command interfaces.ICommand) *value.R
 	return model
 }
 
-// Handler - HTTP handler
 type Handler struct{}
 
-// Handle - Execute http request
 func (h *Handler) Handle(context echo.Context, command interfaces.ICommand) error {
 	model := buildParameters(context, command)
 
@@ -60,7 +58,6 @@ func (h *Handler) Handle(context echo.Context, command interfaces.ICommand) erro
 	return onSuccess(context, rs)
 }
 
-// NewHandler ...
 func NewHandler() IHandler {
 	return &Handler{}
 }

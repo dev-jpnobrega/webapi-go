@@ -16,7 +16,6 @@ func adapter(command interfaces.ICommand, h handler.IHandler) func(c echo.Contex
 	}
 }
 
-// Build - routers
 func Build(server *echo.Echo) {
 	server.GET("/", func(context echo.Context) error {
 		return context.String(http.StatusOK, "OI")

@@ -7,7 +7,7 @@ import (
 	"github.com/google/uuid"
 )
 
-// Client - Client Entity
+// A Client entity
 type Client struct {
 	ID        uuid.UUID `json:"id" param:"id"`
 	Name      string    `json:"name" form:"name" query:"name" validate:"required"`
@@ -19,11 +19,6 @@ type Client struct {
 	DeletedAt *time.Time
 }
 
-func (c *Client) get() interface{} {
-	return c
-}
-
-// IsValid - Check Client
 func (c Client) IsValid() bool {
 	return (len(strings.TrimSpace(c.Name)) > 0)
 }

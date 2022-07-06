@@ -36,10 +36,8 @@ func buildAuthParameters(context echo.Context, command interfaces.ICommand) (*va
 	return model, err
 }
 
-// AuthenticationHandler - HTTP handler with authentication
 type AuthenticationHandler struct{}
 
-// Handle - Execute http request
 func (h *AuthenticationHandler) Handle(context echo.Context, command interfaces.ICommand) error {
 	model, err := buildAuthParameters(context, command)
 
@@ -64,7 +62,6 @@ func (h *AuthenticationHandler) Handle(context echo.Context, command interfaces.
 	return onSuccess(context, rs)
 }
 
-// NewAuthHandler ...
 func NewAuthHandler() IHandler {
 	return &AuthenticationHandler{}
 }

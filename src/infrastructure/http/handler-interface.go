@@ -6,7 +6,7 @@ import (
 	echo "github.com/labstack/echo/v4"
 )
 
-// IHandler - Representation hanlder interface
+// A IHandler represent hanlder interface
 type IHandler interface {
 	Handle(context echo.Context, command interfaces.ICommand) error
 }

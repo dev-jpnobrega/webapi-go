@@ -9,7 +9,6 @@ import (
 	"github.com/labstack/gommon/log"
 )
 
-// CustomBinder - CustomBinder validate struct
 type CustomBinder struct{}
 
 func parseGet(i interface{}, r *http.Request) (err error) {

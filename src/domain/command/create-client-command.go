@@ -8,19 +8,17 @@ import (
 	"github.com/google/uuid"
 )
 
-// CreateClientComannd - Create client command
+// A CreateClientComannd represent business logic to create client
 type CreateClientComannd struct {
 	Repository interfaces.IClientRepository
 }
 
-// GetModelValidate command
 func (c *CreateClientComannd) GetModelValidate() *values.ValidateModal {
 	return &values.ValidateModal{
 		Modal: &entity.Client{},
 	}
 }
 
-// Execute - Create client execute
 func (c *CreateClientComannd) Execute(input values.RequestData) (
 	result values.ResponseData, err *values.ResponseError,
 ) {

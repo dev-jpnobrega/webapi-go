@@ -15,7 +15,6 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-// SignIn -
 func SignIn(data interface{}, duration time.Duration) (string, error) {
 	claims := &Claims{
 		Username: "creds.Username",

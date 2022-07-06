@@ -5,7 +5,7 @@ import (
 	entity "webapi/src/domain/entity"
 )
 
-// IClientRepository - interface
+// A IClientRepository represent repository client interface
 type IClientRepository interface {
 	Get(params interface{}) (*[]entity.Client, *values.ResponseError)
 	Create(client *entity.Client) (*entity.Client, *values.ResponseError)

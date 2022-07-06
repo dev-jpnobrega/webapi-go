@@ -6,19 +6,17 @@ import (
 	entity "webapi/src/domain/entity"
 )
 
-// PutClientComannd - PUT client command
+// A PutClientComannd represent business logic to edit client
 type PutClientComannd struct {
 	Repository interfaces.IClientRepository
 }
 
-// GetModelValidate command
 func (c *PutClientComannd) GetModelValidate() *values.ValidateModal {
 	return &values.ValidateModal{
 		Modal: &values.PutArgs{},
 	}
 }
 
-// Execute - Create client execute
 func (c *PutClientComannd) Execute(input values.RequestData) (
 	result values.ResponseData, err *values.ResponseError,
 ) {

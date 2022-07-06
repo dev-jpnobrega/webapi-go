@@ -7,7 +7,6 @@ import (
 	repository "webapi/src/infrastructure/repository"
 )
 
-// PutClientFactory - factory
 func PutClientFactory() interfaces.ICommand {
 	return &command.PutClientComannd{
 		Repository: &repository.ClientRepository{

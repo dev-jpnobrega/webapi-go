@@ -5,22 +5,17 @@ import (
 	values "webapi/src/domain/contract/value"
 )
 
-// GetClientCommand - Search clients by arguments
+// A GetClientCommand represent business logic to search clients
 type GetClientCommand struct {
 	Repository interfaces.IClientRepository
 }
 
-// GetModelValidate command
-// func (g *GetClientCommand) GetModelValidate() interface{} {
-//	return &values.SearchArgs{}
-// }
 func (c *GetClientCommand) GetModelValidate() *values.ValidateModal {
 	return &values.ValidateModal{
 		Modal: &values.SearchArgs{},
 	}
 }
 
-// Execute - Inicialize command operation
 func (g *GetClientCommand) Execute(input values.RequestData) (
 	result values.ResponseData, err *values.ResponseError,
 ) {

@@ -4,7 +4,7 @@ import (
 	values "webapi/src/domain/contract/value"
 )
 
-// ICommand - Representation command interface
+// A ICommand represent command interface
 type ICommand interface {
 	GetModelValidate() *values.ValidateModal
 	Execute(values.RequestData) (values.ResponseData, *values.ResponseError)

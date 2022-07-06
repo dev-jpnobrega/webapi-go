@@ -1,21 +1,18 @@
 package infrastructure
 
 import (
+	"log"
 	db "webapi/src/db"
 	values "webapi/src/domain/contract/value"
 	entity "webapi/src/domain/entity"
-
-	"github.com/labstack/gommon/log"
 )
 
-// ClientRepository - Struct repository
+// A ClientRepository represent client database
 type ClientRepository struct {
 	Database db.IDB
 }
 
-// Get - by params
 func (c *ClientRepository) Get(params interface{}) (*[]entity.Client, *values.ResponseError) {
-
 	clients := &[]entity.Client{}
 
 	c.Database.GetModel(&entity.Client{}).Find(&clients)
@@ -23,22 +20,18 @@ func (c *ClientRepository) Get(params interface{}) (*[]entity.Client, *values.Re
 	return clients, nil
 }
 
-// Create - by entity.Client
 func (c *ClientRepository) Create(client *entity.Client) (*entity.Client, *values.ResponseError) {
+	clientResult := c.Database.GetModel(&entity.Client{}).Create(client).Value
 
-	clientRestul := c.Database.GetModel(&entity.Client{}).Create(client).Value
-
-	log.Info(clientRestul)
+	log.Println(clientResult)
 
 	return client, nil
 }
 
-// Update - by client props
 func (c *ClientRepository) Update(client *entity.Client) (bool, *values.ResponseError) {
-
 	result := c.Database.GetModel(&entity.Client{}).Updates(client).Error
 
-	log.Info(result)
+	log.Println(result)
 
 	return true, nil
 }
