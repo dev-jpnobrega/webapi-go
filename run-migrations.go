@@ -31,5 +31,5 @@ func main() {
 	if err = m.Migrate(); err != nil {
 		log.Fatalf("Could not migrate: %v", err)
 	}
-	log.Printf("Migration did run successfully")
+	log.Printf("Migration did run successfully1")
 }
