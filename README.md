@@ -50,7 +50,30 @@
      ```cmd
     docker-compose up
     ```
-  
+
+- Run Unit tests
+  - In terminal
+    ```go
+    go test  ./test/unit/... -race -covermode=atomic  -v -coverpkg=./src/... -coverprofile=coverage.out
+    ```
+
+- Run Integration tests
+  - In terminal
+    ```go
+    go test  ./test/integration/... -race -covermode=atomic  -v -coverpkg=./src/... -coverprofile=coverage.out
+    ```
+
+- Run All tests
+  - In terminal
+    ```go
+    go test  ./test/... -race -covermode=atomic  -v -coverpkg=./src/... -coverprofile=coverage.out
+    ```
+
+- Export (HTML) collection coverage
+  - In terminal
+    ```go
+    go tool cover -html=coverage.out -o=coverage.html
+    ```
 
 
 ## Contributing

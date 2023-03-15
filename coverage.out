@@ -1,0 +1,17 @@
+mode: atomic
+webapi/src/domain/command/create-client-command.go:16.72,20.2 1 1
+webapi/src/domain/command/create-client-command.go:24.3,30.16 4 2
+webapi/src/domain/command/create-client-command.go:30.16,32.3 1 1
+webapi/src/domain/command/create-client-command.go:34.2,37.8 3 1
+webapi/src/domain/command/get-client-command.go:13.69,17.2 1 1
+webapi/src/domain/command/get-client-command.go:21.3,26.16 3 2
+webapi/src/domain/command/get-client-command.go:26.16,28.3 1 1
+webapi/src/domain/command/get-client-command.go:30.2,33.8 3 1
+webapi/src/domain/command/put-client-command.go:14.69,18.2 1 1
+webapi/src/domain/command/put-client-command.go:22.3,27.16 3 2
+webapi/src/domain/command/put-client-command.go:27.16,29.3 1 1
+webapi/src/domain/command/put-client-command.go:31.2,34.8 3 1
+webapi/src/domain/contract/value/data-value-result.go:35.87,44.2 4 3
+webapi/src/domain/contract/value/data-value-result.go:46.74,53.2 2 1
+webapi/src/domain/entity/client-entity.go:22.32,24.2 1 0
+webapi/src/domain/entity/user-entity.go:17.31,19.2 1 0
